@@ -10,8 +10,6 @@ enum AndroidNavigationMode { threeButton, twoButton, gesture, unknown }
 /// Shared bottom spacing and Android navigation mode adapter.
 abstract final class AndroidNavigationAdapter {
   static const double defaultBottomSpacing = 16;
-  static const double iosSafeAreaBottomSpacing = 32;
-
   static const MethodChannel _channel = MethodChannel(
     'android_navigation_adapter',
   );
@@ -64,7 +62,12 @@ abstract final class AndroidNavigationAdapter {
     if (defaultTargetPlatform == TargetPlatform.android) {
       return safeAreaBottom + spacing;
     }
-    return safeAreaBottom > 0 ? iosSafeAreaBottomSpacing : spacing;
+    return safeAreaBottom > 0 ? spacing * 2 : spacing;
+  }
+
+  /// Returns only the system-provided bottom inset.
+  static double bottomInset(BuildContext context) {
+    return MediaQuery.paddingOf(context).bottom;
   }
 
   /// Returns the combined height of a fixed bottom action area.
