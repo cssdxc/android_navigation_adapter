@@ -1,0 +1,24 @@
+name: android_navigation_adapter
+description: Platform-aware bottom spacing and Android navigation mode detection for Flutter.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.44.1"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.cssdxc.android_navigation_adapter
+        pluginClass: AndroidNavigationAdapterPlugin
